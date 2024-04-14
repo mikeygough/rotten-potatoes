@@ -11,3 +11,18 @@
 - Users can cancel their rsvp (/rsvps/destroy)
 - Users can comment on reviews (comments#create)
 - Users can delete comments (comments#destroy)
+
+#### notes
+
+installed mongo db with:
+
+`brew install mongodb-community@7.0`
+
+created a folder to save the db
+
+`mkdir -p /data/db`
+
+started the mongodb daemon
+
+`mongod`
+
