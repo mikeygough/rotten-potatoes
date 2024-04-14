@@ -1,8 +1,8 @@
-// express
+// express -----------------
 const express = require('express');
 const app = express();
 
-// handlebars
+// handlebars -----------------
 const { engine } = require('express-handlebars');
 const Handlebars = require('handlebars');
 const {
@@ -25,12 +25,18 @@ app.engine(
 );
 app.set('view engine', 'handlebars');
 
-// routes
+// mock data -----------------
+let reviews = [
+  { title: 'Great Review', movieTitle: 'Batman II' },
+  { title: 'Awesome Movie', movieTitle: 'Titanic' },
+];
+
+// routes -----------------
 app.get('/', (req, res) => {
-  res.render('home', { msg: 'Handlebars are Cool!' });
+  res.render('reviews-index', { reviews: reviews });
 });
 
-// server
+// server -----------------
 app.listen(3000, () => {
   console.log('App listening on port 3000!');
 });
