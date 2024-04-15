@@ -120,6 +120,21 @@ app.put('/reviews/:id', (req, res) => {
     });
 });
 
+// DELETE
+app.delete('/reviews/:id', function (req, res) {
+  Review.findOneAndDelete({ _id: req.params.id })
+    .then((review) => {
+      if (!review) {
+        return res.status(404).send('Review not found');
+      }
+      res.redirect('/');
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res.status(500).send('Error deleting review');
+    });
+});
+
 // server ----------------------------------
 app.listen(3000, () => {
   console.log('App listening on port 3000!');
