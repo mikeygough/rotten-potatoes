@@ -27,9 +27,7 @@ app.set('view engine', 'handlebars');
 
 // mongoose ----------------------------------
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/rotten-potatoes', {
-  useNewUrlParser: true,
-});
+mongoose.connect('mongodb://localhost/rotten-potatoes');
 
 // body-parser ----------------------------------
 const bodyParser = require('body-parser');
@@ -54,3 +52,5 @@ const reviews = require('./controllers/reviews')(app);
 app.listen(3000, () => {
   console.log('App listening on port 3000!');
 });
+
+module.exports = app;
