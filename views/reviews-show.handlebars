@@ -24,7 +24,7 @@
 
     <!-- Show Comments -->
     {{#each comments}}
-      {{> comment}}
+      {{> comment comment=this movieId=../review.movieId}}
     {{/each}}
 
   </div>
