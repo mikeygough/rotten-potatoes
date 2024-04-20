@@ -18,16 +18,17 @@ module.exports = function (app) {
   // });
 
   // NEW
-  app.get('/reviews/new', (req, res) => {
-    res.render('reviews-new', { title: 'New Review' });
+  app.get('/movies/:movieId/reviews/new', (req, res) => {
+    res.render('reviews-new', { movieId: req.params.movieId });
   });
 
   // CREATE
-  app.post('/reviews', (req, res) => {
+  app.post('/movies/:movieId/reviews', (req, res) => {
+    console.log(req.body);
     Review.create(req.body)
       .then((review) => {
         console.log(review);
-        res.redirect(`/reviews/${review._id}`); // Redirect to reviews/:id
+        res.redirect(`/movies/${review.movieId}`);
       })
       .catch((err) => {
         console.log(err.message);
@@ -35,7 +36,7 @@ module.exports = function (app) {
   });
 
   // SHOW
-  app.get('/reviews/:id', (req, res) => {
+  app.get('/movies/:movieId/reviews/:id', (req, res) => {
     // find review
     Review.findById(req.params.id)
       .then((review) => {
@@ -60,7 +61,7 @@ module.exports = function (app) {
   });
 
   // EDIT
-  app.get('/reviews/:id/edit', (req, res) => {
+  app.get('/movies/:movieId/reviews/:id/edit', (req, res) => {
     Review.findById(req.params.id)
       .then((review) => {
         res.render('reviews-edit', {
@@ -75,10 +76,12 @@ module.exports = function (app) {
   });
 
   // UPDATE
-  app.put('/reviews/:id', (req, res) => {
+  app.put('/movies/:movieId/reviews/:id', (req, res) => {
     Review.findByIdAndUpdate(req.params.id, req.body)
       .then((review) => {
-        res.redirect(`/reviews/${review._id}`);
+        res.redirect(
+          `/movies/${review.movieId}/reviews/${review._id}`
+        );
       })
       .catch((err) => {
         console.log(err.message);
@@ -86,13 +89,13 @@ module.exports = function (app) {
   });
 
   // DELETE
-  app.delete('/reviews/:id', function (req, res) {
+  app.delete('/movies/:movieId/reviews/:id', function (req, res) {
     Review.findOneAndDelete({ _id: req.params.id })
       .then((review) => {
         if (!review) {
           return res.status(404).send('Review not found');
         }
-        res.redirect('/');
+        res.redirect(`/movies/${review.movieId}`);
       })
       .catch((err) => {
         console.log(err.message);

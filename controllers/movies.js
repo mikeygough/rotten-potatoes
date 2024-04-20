@@ -1,4 +1,5 @@
 require('dotenv').config();
+const Review = require('../models/review');
 
 module.exports = function (app) {
   const { MovieDb } = require('moviedb-promise');
@@ -29,8 +30,15 @@ module.exports = function (app) {
             if (trailer) {
               movie.trailer_youtube_id = trailer.key;
             }
-
-            res.render('movies-show', { movie: movie });
+            // FIND THIS MOVIE'S REVIEWS
+            Review.find({ movieId: req.params.id }).then(
+              (reviews) => {
+                res.render('movies-show', {
+                  movie: movie,
+                  reviews: reviews,
+                });
+              }
+            );
           })
           .catch(console.error);
       })
