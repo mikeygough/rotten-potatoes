@@ -47,6 +47,7 @@ app.use(methodOverride('_method'));
 // routes ----------------------------------
 // refactored into controllers
 const reviews = require('./controllers/reviews')(app);
+const comments = require('./controllers/comments')(app);
 
 // server ----------------------------------
 app.listen(3000, () => {
