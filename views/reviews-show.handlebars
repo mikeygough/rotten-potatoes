@@ -22,10 +22,11 @@
 
     <hr>
 
-    <!-- Show Comments -->
-    {{#each comments}}
-      {{> comment comment=this movieId=../review.movieId}}
-    {{/each}}
-
+    <div id="comments">
+      <!-- Show Comments -->
+      {{#each comments}}
+        {{> comment comment=this movieId=../review.movieId}}
+      {{/each}}
+    </div>
   </div>
 </div>

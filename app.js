@@ -32,6 +32,8 @@ mongoose.connect('mongodb://localhost/rotten-potatoes');
 // body-parser ----------------------------------
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
 // method-override ----------------------------------
 const methodOverride = require('method-override');

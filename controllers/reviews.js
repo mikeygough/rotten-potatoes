@@ -47,6 +47,7 @@ module.exports = function (app) {
         review.createdAtFormatted = createdAt;
         // fetch its comments
         Comment.find({ reviewId: req.params.id }).then((comments) => {
+          comments.reverse();
           // respond with the template with both values
           res.render('reviews-show', {
             review: review,
