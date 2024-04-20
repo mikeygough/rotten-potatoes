@@ -18,17 +18,32 @@ module.exports = (app) => {
   // DELETE
   app.delete(
     '/movies/:movieId/reviews/:reviewId/comments/:id',
-    function (req, res) {
+    (req, res) => {
       console.log('DELETE comment');
       Comment.findOneAndDelete(req.params.id)
         .then((comment) => {
-          res.redirect(
-            `/movies/${req.params.movieId}/reviews/${comment.reviewId}`
-          );
+          res.status(200).send(comment);
         })
         .catch((err) => {
           console.log(err.message);
+          res.status(400).send(err);
         });
     }
   );
+  // NON-AJAX
+  // app.delete(
+  //   '/movies/:movieId/reviews/:reviewId/comments/:id',
+  //   function (req, res) {
+  //     console.log('DELETE comment');
+  //     Comment.findOneAndDelete(req.params.id)
+  //       .then((comment) => {
+  //         res.redirect(
+  //           `/movies/${req.params.movieId}/reviews/${comment.reviewId}`
+  //         );
+  //       })
+  //       .catch((err) => {
+  //         console.log(err.message);
+  //       });
+  //   }
+  // );
 };
