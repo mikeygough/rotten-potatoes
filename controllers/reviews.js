@@ -5,17 +5,17 @@ const moment = require('moment');
 
 module.exports = function (app) {
   // INDEX
-  app.get('/', (req, res) => {
-    Review.find()
-      .then((reviews) => {
-        // executed when the promise resolves
-        res.render('reviews-index', { reviews: reviews });
-      })
-      .catch((err) => {
-        // executed if the promise is rejected
-        console.log(err);
-      });
-  });
+  // app.get('/', (req, res) => {
+  //   Review.find()
+  //     .then((reviews) => {
+  //       // executed when the promise resolves
+  //       res.render('reviews-index', { reviews: reviews });
+  //     })
+  //     .catch((err) => {
+  //       // executed if the promise is rejected
+  //       console.log(err);
+  //     });
+  // });
 
   // NEW
   app.get('/reviews/new', (req, res) => {

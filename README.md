@@ -2,6 +2,8 @@
 
 ## user stories
 
+### part 1
+
 - Users can view all reviews (index)
 - Users can create a review (new/create)
 - Users can view one review (show)
@@ -11,6 +13,14 @@
 - Users can cancel their rsvp (/rsvps/destroy)
 - Users can comment on reviews (comments#create)
 - Users can delete comments (comments#destroy)
+
+### part 2
+
+- Users can see recent movies from TheMovieDB
+- Users can see one Movie, including the poster and trailer
+- Users reviews are associated with the corresponding movie
+- Users can add or delete comments without requiring a page refresh
+- Users can access an admin dashboard that lists all reviews and allows them to delete them
 
 #### notes
 
