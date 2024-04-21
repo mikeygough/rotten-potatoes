@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // express ----------------------------------
 const express = require('express');
 const app = express();
@@ -16,12 +17,10 @@ app.engine(
     handlebars: allowInsecurePrototypeAccess(Handlebars),
     helpers: {
       ifEquals: function (arg1, arg2, options) {
-        return arg1 === arg2
-          ? options.fn(this)
-          : options.inverse(this);
+        return arg1 === arg2 ? options.fn(this) : options.inverse(this);
       },
     },
-  })
+  }),
 );
 app.set('view engine', 'handlebars');
 

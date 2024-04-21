@@ -41,9 +41,7 @@ module.exports = function (app) {
     Review.findById(req.params.id)
       .then((review) => {
         let createdAt = review.createdAt;
-        createdAt = moment(createdAt).format(
-          'MMMM Do YYYY, h:mm:ss a'
-        );
+        createdAt = moment(createdAt).format('MMMM Do YYYY, h:mm:ss a');
         review.createdAtFormatted = createdAt;
         // fetch its comments
         Comment.find({ reviewId: req.params.id }).then((comments) => {
@@ -80,9 +78,7 @@ module.exports = function (app) {
   app.put('/movies/:movieId/reviews/:id', (req, res) => {
     Review.findByIdAndUpdate(req.params.id, req.body)
       .then((review) => {
-        res.redirect(
-          `/movies/${review.movieId}/reviews/${review._id}`
-        );
+        res.redirect(`/movies/${review.movieId}/reviews/${review._id}`);
       })
       .catch((err) => {
         console.log(err.message);

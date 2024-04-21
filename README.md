@@ -43,3 +43,17 @@ We use --save-dev when we want to save dependencies that will not be needed for 
 `chai` - assertion library, provides syntactic sugar to make writing tests intuitive
 
 `chai-http` - helper test library, provides methods to make http requests inside tests easier.
+
+prettier & other formatting stuff:
+
+`npm i -D eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node`
+
+airbnb style guide
+`npx install-peerdeps --dev eslint-config-airbnb`
+
+create the `.prettierrc file`
+
+installed eslint globally and created the file.
+`sudo npm i -g eslint`
+
+`eslint --init`

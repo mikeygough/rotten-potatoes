@@ -25,20 +25,18 @@ module.exports = function (app) {
           .movieVideos({ id: req.params.id })
           .then((videos) => {
             const trailer = videos.results.find(
-              (video) => video.type === 'Trailer'
+              (video) => video.type === 'Trailer',
             );
             if (trailer) {
               movie.trailer_youtube_id = trailer.key;
             }
             // FIND THIS MOVIE'S REVIEWS
-            Review.find({ movieId: req.params.id }).then(
-              (reviews) => {
-                res.render('movies-show', {
-                  movie: movie,
-                  reviews: reviews,
-                });
-              }
-            );
+            Review.find({ movieId: req.params.id }).then((reviews) => {
+              res.render('movies-show', {
+                movie: movie,
+                reviews: reviews,
+              });
+            });
           })
           .catch(console.error);
       })

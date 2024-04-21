@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Comment = require('../models/comment');
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -10,7 +9,7 @@ const reviewSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const Review = mongoose.model('Review', reviewSchema);
